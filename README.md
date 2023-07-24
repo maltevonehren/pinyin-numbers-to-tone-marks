@@ -1,6 +1,8 @@
 # pin1yin1 → pīnyīn
 
-An anki add-on that changes pinyin with numbers to pinyin with tone marks
+An Anki add-on that changes pinyin with numbers to pinyin with tone marks.
+This can be helpful when creating notes on a computer with a keyboard that
+cannot type characters such as ī or ǚ. 
 
 ## Usage
 
@@ -20,3 +22,10 @@ click the button `pin1yin1 → pīnyīn: apply to active deck` in the tools menu
 
 When finishing editing a field the add-on will automatically change the text.
 To see the changes, click out of the field.
+
+## Installation
+
+To download this add-on, please copy and paste the following code into Anki 2.1:
+```
+1850033186
+```
