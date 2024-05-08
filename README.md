@@ -12,6 +12,7 @@ By default the add-on will be applied on all fields that are called `pinyin`
 For example `xian4zai4` will become `xiànzài`.
 Apostrophes are also inserted where necessary,
 so `wan3an1` will become `wǎn'ān`.
+In addition, `v` will be transformed to `ü`.
 
 ### Change all notes in a deck
 
