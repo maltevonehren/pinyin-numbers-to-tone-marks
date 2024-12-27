@@ -7,12 +7,12 @@ MARK_ON_SECOND = [
 ]
 VOWELS = ["a", "e", "i", "o", "u", "ü", "v"]
 TONES = {
-    "a": "āáǎà",
-    "e": "ēéěè",
-    "i": "īíǐì",
-    "o": "ōóǒò",
-    "u": "ūúǔù",
-    "ü": "ǖǘǚǜ",
+    "a": "āáǎàa",
+    "e": "ēéěèe",
+    "i": "īíǐìi",
+    "o": "ōóǒòo",
+    "u": "ūúǔùu",
+    "ü": "ǖǘǚǜü",
 }
 V2Ü = {
     "v": "ü",
@@ -60,7 +60,7 @@ def pinyin_numbers_to_marks(input: str) -> str:
                     cluster_start = i
                 cluster_end = i + 1
 
-            elif c in ["1", "2", "3", "4"]:
+            elif c in ["1", "2", "3", "4", "5"]:
                 cluster = v2ü(cluster)
                 if cluster in MARK_ON_FIRST:
                     output += add_tone(cluster, 0, int(c)) + input[cluster_end:i]
