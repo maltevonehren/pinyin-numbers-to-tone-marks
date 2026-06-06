@@ -4,17 +4,19 @@ from aqt import gui_hooks, mw
 from aqt.utils import showInfo, qconnect
 from aqt.qt import *
 
-from .pinyin_util import *
+from .pinyin_util import pinyin_numbers_to_marks
 
 
 def transform_all() -> None:
     current = mw.col.decks.current()
-    ids = mw.col.find_notes(mw.col.build_search_string(SearchNode(deck=current['name'])))
+    ids = mw.col.find_notes(
+        mw.col.build_search_string(SearchNode(deck=current["name"]))
+    )
     num_changed = 0
     for id in ids:
         note: Note = mw.col.get_note(id)
-        for (field, value) in note.items():
-            if 'pinyin' in field.lower():
+        for field, value in note.items():
+            if "pinyin" in field.lower():
                 new_value = pinyin_numbers_to_marks(value)
                 if new_value != value:
                     note[field] = new_value
@@ -25,7 +27,7 @@ def transform_all() -> None:
 
 def on_editor_did_unfocus_field(changed: bool, note: Note, current_field: int):
     (field, value) = note.items()[current_field]
-    if 'pinyin' in field.lower():
+    if "pinyin" in field.lower():
         new_value = pinyin_numbers_to_marks(value)
         if new_value != value:
             note[field] = new_value

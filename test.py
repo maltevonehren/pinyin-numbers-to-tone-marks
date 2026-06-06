@@ -1,4 +1,4 @@
-from pinyin_util import *
+from pinyin_util import pinyin_numbers_to_marks
 
 TESTS = [
     ("", ""),
@@ -28,8 +28,7 @@ TESTS = [
     ("xianzai4", "xianzài"),
 ]
 
-for (input, output) in TESTS:
+for input, output in TESTS:
     result = pinyin_numbers_to_marks(input)
-    assert result == output, \
-        f"test failed for {input}: got {result} expected {output}"
-print('All checks passed')
+    assert result == output, f"test failed for {input}: got {result} expected {output}"
+print("All checks passed")

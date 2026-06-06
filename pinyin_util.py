@@ -1,9 +1,27 @@
-
 MARK_ON_FIRST = [
-    "a", "ai", "ao", "e", "ei", "i", "o", "ou", "u", "ü",
+    "a",
+    "ai",
+    "ao",
+    "e",
+    "ei",
+    "i",
+    "o",
+    "ou",
+    "u",
+    "ü",
 ]
 MARK_ON_SECOND = [
-    "ia", "iao", "ie", "io", "iu", "ua", "uai", "ue", "ui", "uo", "üe",
+    "ia",
+    "iao",
+    "ie",
+    "io",
+    "iu",
+    "ua",
+    "uai",
+    "ue",
+    "ui",
+    "uo",
+    "üe",
 ]
 VOWELS = ["a", "e", "i", "o", "u", "ü", "v"]
 TONES = {
@@ -23,7 +41,8 @@ V2Ü = {
 def add_tone(word: str, position: int, tone: int) -> str:
     """return a str where the character at `position` is replaced
     with the same character but with a tone mark corresponding to the `tone`"""
-    return word[:position] + TONES[word[position]][tone-1] + word[position+1:]
+    return word[:position] + TONES[word[position]][tone - 1] + word[position + 1 :]
+
 
 def v2ü(word: str) -> str:
     if word in V2Ü:
@@ -33,16 +52,15 @@ def v2ü(word: str) -> str:
 
 
 def next_character_is_vowel(input: str, position: int) -> bool:
-    return position+1 < len(input) and input[position+1] in VOWELS
+    return position + 1 < len(input) and input[position + 1] in VOWELS
 
 
 def pinyin_numbers_to_marks(input: str) -> str:
-    i = 0
     cluster_start = 0
     cluster_end = 0
     seen_cluster = False
     output = ""
-    for (i, c) in enumerate(input):
+    for i, c in enumerate(input):
         if not seen_cluster:
             if c in VOWELS:
                 cluster_start = i
@@ -71,11 +89,11 @@ def pinyin_numbers_to_marks(input: str) -> str:
                     if next_character_is_vowel(input, i):
                         output += "'"
                 else:
-                    output += input[cluster_start:i+1]
+                    output += input[cluster_start : i + 1]
                 seen_cluster = False
 
             elif c == " ":
-                output += v2ü(cluster) + input[cluster_end:i+1]
+                output += v2ü(cluster) + input[cluster_end : i + 1]
                 seen_cluster = False
 
         i += 1
